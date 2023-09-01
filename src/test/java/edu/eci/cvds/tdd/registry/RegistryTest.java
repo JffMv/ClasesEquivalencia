@@ -22,14 +22,14 @@ public class RegistryTest {
     public void validateRegistry_IdMoresZeros() {
         Person person = new Person("Pepito_1", 0000, 20, Gender.FEMALE, true);
         RegisterResult result = registry.registerVoter(person);
-        Assert.assertEquals(RegisterResult.UNDERAGE, result);
+        Assert.assertEquals(RegisterResult.VALID, result);
     }
 
     @Test
     public void validateRegistry_IdJustZero() {
         Person person = new Person("Pepito_2", 0, 100, Gender.FEMALE, true);
         RegisterResult result = registry.registerVoter(person);
-        Assert.assertEquals(RegisterResult.UNDERAGE, result);
+        Assert.assertEquals(RegisterResult.DUPLICATED, result);
     }
 
     @Test
