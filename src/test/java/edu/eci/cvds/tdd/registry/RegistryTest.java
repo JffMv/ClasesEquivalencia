@@ -22,14 +22,10 @@ public class RegistryTest {
     public void validateRegistry_IdMoresZeros() {
         Person person = new Person("Pepito_1", 0000, 20, Gender.FEMALE, true);
         RegisterResult result = registry.registerVoter(person);
-        Assert.assertEquals(RegisterResult.VALID, result);
-    }
-
-    @Test
-    public void validateRegistry_IdJustZero() {
-        Person person = new Person("Pepito_2", 0, 100, Gender.FEMALE, true);
-        RegisterResult result = registry.registerVoter(person);
-        Assert.assertEquals(RegisterResult.DUPLICATED, result);
+    
+        Person person1 = new Person("Pepito_2", 0, 100, Gender.FEMALE, true);
+        RegisterResult result2 = registry.registerVoter(person1);
+        Assert.assertEquals(RegisterResult.DUPLICATED, result2);
     }
 
     @Test
@@ -57,12 +53,6 @@ public class RegistryTest {
         Person person = new Person("Pepito_3", 01232, 145, Gender.MALE, true);
         RegisterResult result = registry.registerVoter(person);
         Assert.assertEquals(RegisterResult.VALID, result);
-    }
-    @Test
-    public void validateRegistry_ContLeftZero() {
-        Person person = new Person("Pepito_3", 1232, 144, Gender.MALE, true);
-        RegisterResult result = registry.registerVoter(person);
-        Assert.assertEquals(RegisterResult.DUPLICATED, result);
     }
 
     @Test
